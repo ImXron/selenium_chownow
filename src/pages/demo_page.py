@@ -95,7 +95,7 @@ class DemoPage(object):
     def click_error_prompt_close_button(self):
         """Clicks on the close "X" button when an error message pops up from invalid text input.
 
-        :return:
+        :return: None.
         """
         self.driver.find_element_by_xpath(self.CLOSE_FIELD_ERROR_MESSAGE_BUTTON).click()
 

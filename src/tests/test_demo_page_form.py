@@ -21,9 +21,6 @@ def test_clicking_request_demo_with_no_text_inputs_filled_out_shows_an_error(dem
 @pytest.mark.ID0006
 @pytest.mark.demo_page
 def test_fill_out_demo_request_details_and_verify_text_inputs(demo_page,
-                                                              wait,
-                                                              expected_condition,
-                                                              locate_by,
                                                               setup_tear_down):
     first_name = "Bat"
     last_name = "Man"
@@ -33,8 +30,6 @@ def test_fill_out_demo_request_details_and_verify_text_inputs(demo_page,
     phone_number = "800-bat-mann"
 
     demo_page.go_to()
-    assert wait.until(expected_condition.visibility_of_element_located((locate_by.ID, demo_page.FIRST_NAME_FIELD)))
-
     demo_page.first_name_is(first_name)
     demo_page.last_name_is(last_name)
     demo_page.restaurant_name_is(restaurant_name)

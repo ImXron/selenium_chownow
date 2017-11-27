@@ -8,9 +8,11 @@
 
 import pytest
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 
+from src.pages.demo_page import DemoPage
 from src.pages.home_page import HomePage
 
 
@@ -22,17 +24,17 @@ def chrome_driver():
     :return: Chrome web driver object.
     """
 
-    return webdriver.Chrome("C:\\Users\\Imran\\Desktop\\chromedriver_win32\\chromedriver.exe")
+    return webdriver.Chrome()
 
 
 @pytest.fixture
-def tear_down(chrome_driver):
-    """This fixture will only run at the end of each test (hence the yield).
+def setup_tear_down(chrome_driver):
+    """This fixture will run at the beginning and end of each test.
 
     :param chrome_driver: Chrome web driver instance.
     :return: None.
     """
-
+    chrome_driver.maximize_window()
     yield
     chrome_driver.quit()
 
@@ -48,13 +50,23 @@ def home_page(chrome_driver):
 
 
 @pytest.fixture
+def demo_page(chrome_driver):
+    """This fixture creates an instance of the demo page object.
+
+    :return: Returns a new instance of the demo page.
+    """
+
+    return DemoPage(chrome_driver)
+
+
+@pytest.fixture
 def wait(chrome_driver):
     """This fixture simply returns an instance of the wait class.
 
     :return: Returns a wait instance.
     """
 
-    wait_time = 10
+    wait_time = 15
     return WebDriverWait(chrome_driver, wait_time)
 
 
@@ -67,3 +79,13 @@ def expected_condition():
     """
 
     return expected_conditions
+
+
+@pytest.fixture
+def locate_by():
+    """
+
+    :return: The by module, which contains supported locator strategies.
+    """
+
+    return By

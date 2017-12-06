@@ -10,12 +10,12 @@ def test_clicking_request_demo_with_no_text_inputs_filled_out_shows_an_error(dem
                                                                              setup_tear_down):
     demo_page.go_to()
     demo_page.click_request_demo_button()
-    for element in (demo_page.FIELD_ERROR_MESSAGE, demo_page.CLOSE_FIELD_ERROR_MESSAGE_BUTTON):
-        assert wait.until(expected_condition.visibility_of_element_located((locate_by.XPATH, element)))
+    for element in (demo_page.Locators.FIELD_ERROR_MESSAGE, demo_page.Locators.CLOSE_FIELD_ERROR_MESSAGE_BUTTON):
+        assert wait.until(expected_condition.visibility_of_element_located(element))
 
     demo_page.click_error_prompt_close_button()
-    for element in (demo_page.FIELD_ERROR_MESSAGE, demo_page.CLOSE_FIELD_ERROR_MESSAGE_BUTTON):
-        assert wait.until(expected_condition.invisibility_of_element_located((locate_by.XPATH, element)))
+    for element in (demo_page.Locators.FIELD_ERROR_MESSAGE, demo_page.Locators.CLOSE_FIELD_ERROR_MESSAGE_BUTTON):
+        assert wait.until(expected_condition.invisibility_of_element_located(element))
 
 
 @pytest.mark.ID0006
@@ -25,9 +25,9 @@ def test_fill_out_demo_request_details_and_verify_text_inputs(demo_page,
     first_name = "Bat"
     last_name = "Man"
     restaurant_name = "Everything But Bat"
-    zip_code = "uhh...Gotham City's zip code?"
-    email = "800-bat-mann"
-    phone_number = "800-bat-mann"
+    zip_code = "Uhh...Alfred, please help!"
+    email = "Brucey_boy92@wayneenterprises.com"
+    phone_number = "800-bma-nnnn"
 
     demo_page.go_to()
     demo_page.first_name_is(first_name)

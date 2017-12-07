@@ -6,7 +6,6 @@ import pytest
 def test_clicking_request_demo_with_no_text_inputs_filled_out_shows_an_error(demo_page,
                                                                              wait,
                                                                              expected_condition,
-                                                                             locate_by,
                                                                              setup_tear_down):
     demo_page.go_to()
     demo_page.click_request_demo_button()

@@ -28,7 +28,7 @@ class HomePage(BasePage):
         The second index is the actual locator string (based off the first index above).
 
         """
-        NAV_MENU_BUTTON = (By.XPATH, "//div[@class='header__menu']/p/a")
+        NAV_MENU_BUTTON = (By.XPATH, "//p/a[@href='#']")
         NAV_MENU_CLOSE_BUTTON = (By.XPATH, "//div[@class='nav__menu__close common-close']/a")
         NAV_MENU = (By.XPATH, "//div[@class='nav__menu']")
         MAIN_LOGO = (By.XPATH, "//h1[@class='h1_logo']/a")

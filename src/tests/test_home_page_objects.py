@@ -33,7 +33,6 @@ def test_clicking_the_how_it_works_link_from_the_homepage_takes_us_to_the_how_it
 def test_can_open_nav_menu_with_button_and_close_with_close_button(home_page,
                                                                    wait,
                                                                    expected_condition,
-                                                                   locate_by,
                                                                    setup_tear_down):
     home_page.go_to()
     home_page.click_nav_menu_button()

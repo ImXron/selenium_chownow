@@ -67,6 +67,7 @@ class DemoPage(BasePage):
         :return: None.
         """
         self.set_text(self.get_element(self.Locators.FIRST_NAME_FIELD), first_name)
+        assert self.get_first_name() == first_name
 
     def last_name_is(self, last_name):
         """Enters in a name for the last name field.
@@ -75,6 +76,7 @@ class DemoPage(BasePage):
         :return: None.
         """
         self.set_text(self.get_element(self.Locators.LAST_NAME_FIELD), last_name)
+        assert self.get_last_name() == last_name
 
     def restaurant_name_is(self, restaurant_name):
         """Enters in a name for the restaurant name field.
@@ -83,6 +85,7 @@ class DemoPage(BasePage):
         :return: None.
         """
         self.set_text(self.get_element(self.Locators.RESTAURANT_NAME_FIELD), restaurant_name)
+        assert self.get_restaurant_name() == restaurant_name
 
     def restaurant_zip_code_is(self, restaurant_zip_code):
         """Enters in a number for the restaurant zip code field.
@@ -91,6 +94,7 @@ class DemoPage(BasePage):
         :return: None.
         """
         self.set_text(self.get_element(self.Locators.RESTAURANT_ZIP_CODE_FIELD), restaurant_zip_code)
+        assert self.get_zip_code() == restaurant_zip_code
 
     def email_is(self, email):
         """Enters in an email address for the email field.
@@ -99,6 +103,7 @@ class DemoPage(BasePage):
         :return: None.
         """
         self.set_text(self.get_element(self.Locators.EMAIL_FIELD), email)
+        assert self.get_email() == email
 
     def phone_number_is(self, phone_number):
         """Enters in a number for the phone number field.
@@ -107,6 +112,7 @@ class DemoPage(BasePage):
         :return: None.
         """
         self.set_text(self.get_element(self.Locators.PHONE_NUMBER_FIELD), phone_number)
+        assert self.get_phone_number() == phone_number
 
     # ==================================================================================================================
     # Getters

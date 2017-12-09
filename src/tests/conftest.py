@@ -16,6 +16,7 @@ from src.pages.demo_page import DemoPage
 from src.pages.home_page import HomePage
 
 
+# TODO: This will limit us into using only the chrome driver (not that anyone would want to use anything else!)
 @pytest.fixture
 def chrome_driver():
     """This fixture creates a new instance of the chrome driver. The benefit here is that we NEVER have to create a

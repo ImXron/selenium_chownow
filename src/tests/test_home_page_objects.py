@@ -9,7 +9,7 @@ import pytest
 
 
 @pytest.mark.ID0001
-@pytest.mark.homepage
+@pytest.mark.home_page
 def test_clicking_the_chownow_logo_from_the_homepage_will_take_us_to_the_homepage(home_page,
                                                                                   expected_condition,
                                                                                   setup_tear_down):
@@ -19,7 +19,7 @@ def test_clicking_the_chownow_logo_from_the_homepage_will_take_us_to_the_homepag
 
 
 @pytest.mark.ID0002
-@pytest.mark.homepage
+@pytest.mark.home_page
 def test_clicking_the_how_it_works_link_from_the_homepage_takes_us_to_the_how_it_works_page(home_page,
                                                                                             expected_condition,
                                                                                             setup_tear_down):
@@ -29,24 +29,23 @@ def test_clicking_the_how_it_works_link_from_the_homepage_takes_us_to_the_how_it
 
 
 @pytest.mark.ID0003
-@pytest.mark.homepage
+@pytest.mark.home_page
 def test_can_open_nav_menu_with_button_and_close_with_close_button(home_page,
                                                                    wait,
                                                                    expected_condition,
-                                                                   locate_by,
                                                                    setup_tear_down):
     home_page.go_to()
     home_page.click_nav_menu_button()
-    for element in (home_page.NAV_MENU_CLOSE_BUTTON, home_page.NAV_MENU):
-        assert wait.until(expected_condition.visibility_of_element_located((locate_by.XPATH, element)))
+    for element in (home_page.Locators.NAV_MENU_CLOSE_BUTTON, home_page.Locators.NAV_MENU):
+        assert wait.until(expected_condition.visibility_of_element_located(element))
 
     home_page.click_nav_menu_close_button()
-    for element in (home_page.NAV_MENU_CLOSE_BUTTON, home_page.NAV_MENU):
-        assert wait.until(expected_condition.invisibility_of_element_located((locate_by.XPATH, element)))
+    for element in (home_page.Locators.NAV_MENU_CLOSE_BUTTON, home_page.Locators.NAV_MENU):
+        assert wait.until(expected_condition.invisibility_of_element_located(element))
 
 
 @pytest.mark.ID0004
-@pytest.mark.homepage
+@pytest.mark.home_page
 def test_clicking_the_request_demo_button_from_the_homepage_navbar_will_take_us_to_the_demo_page(home_page,
                                                                                                  expected_condition,
                                                                                                  setup_tear_down):

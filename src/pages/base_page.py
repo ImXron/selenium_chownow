@@ -2,35 +2,35 @@
 
 """
 
+from selenium.webdriver.common.by import By
+
 
 class BasePage(object):
     BASE_URL = "https://www.chownow.com/"
-    PAGE_TITLE = ""
 
     def __init__(self, driver):
         self.driver = driver
 
-    def go_to(self, url):
+    def go_to(self):
         """Opens up the URL. When called from a child class, the child's class url will be used instead.
 
-        :param url: (Str) The desired URL to open.
         :return: None
         """
-        self.driver.get(self.get_page_url())
+        self.driver.get(self.BASE_URL)
 
     def get_page_url(self):
         """Gets the URL of the home page. When called from a child class, the child's class url will be used instead.
 
         :return: (Str) The home page url.
         """
-        return self.BASE_URL
+        return self.driver.url
 
     def get_page_title(self):
         """Gets the title of the home page. When called from a child class, the child's class title will be used instead.
 
         :return: (Str) The title of the home page.
         """
-        return self.PAGE_TITLE
+        return self.driver.title
 
     def get_element(self, locator):
         """This helper method will return a web element. Be sure to use Selenium's "By" class.
@@ -59,3 +59,13 @@ class BasePage(object):
         """
         web_element.clear()
         web_element.send_keys(text)
+
+    def _remove_swipe_element(self):
+        """A web element was added to the right side of the pages that have the menu nav button (for touch screen swiping).
+        This method will make this element invisible so we can click on the menu nav button (overlaps with this bar).
+
+        :return:
+        """
+        SWIPE_BAR = (By.CLASS_NAME, "swipe")
+        if self.get_element(SWIPE_BAR).is_displayed():
+            self.driver.execute_script("document.getElementsByClassName('swipe')[0].style.visibility = 'hidden';")

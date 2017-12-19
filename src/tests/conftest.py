@@ -8,6 +8,7 @@
 
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
@@ -25,7 +26,13 @@ def chrome_driver():
     :return: Chrome web driver object.
     """
 
-    return webdriver.Chrome()
+    # TODO: Be able to pass something into the pytest command
+    # Option to run headless!
+    chrome_options = Options()
+    # chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--window-size=1920x1080")
+
+    return webdriver.Chrome(chrome_options=chrome_options)
 
 
 @pytest.fixture

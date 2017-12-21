@@ -2,8 +2,12 @@
 
 """
 
-from src.pages.base_page import BasePage
 from selenium.webdriver.common.by import By
+
+from src.pages.base_page import BasePage
+
+
+# TODO: Looks like the request demo text fields are on multiple pages: home, how it works, pricing, websites
 
 
 class DemoPage(BasePage):
@@ -30,13 +34,6 @@ class DemoPage(BasePage):
         FIELD_ERROR_MESSAGE = (By.XPATH, "//p[contains(text(), 'Oops.')]")
         CLOSE_FIELD_ERROR_MESSAGE_BUTTON = (By.XPATH, "//div[@class='error__close common-close']/a")
         WHY_ARE_YOU_MOST_INTERESTED_COMBO_BOX = (By.XPATH, "//select[@id='Why_Interested_in_Online_Ordering__c']")
-
-    def go_to(self):
-        """This method gets us the demo page
-
-        :return: None.
-        """
-        super(DemoPage, self).go_to(self.get_page_url())
 
     # ==================================================================================================================
     # Clicks

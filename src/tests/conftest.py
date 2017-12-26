@@ -17,20 +17,32 @@ from src.pages.demo_page import DemoPage
 from src.pages.home_page import HomePage
 
 
+def pytest_addoption(parser):
+    parser.addoption("--headless",
+                     action="store",
+                     default=False,
+                     help="Optionally run selenium chrome tests in headless mode")
+
+
+@pytest.fixture
+def headless(request):
+    return bool(request.config.getoption("--headless"))
+
+
 # TODO: This will limit us into using only the chrome driver (not that anyone would want to use anything else!)
 @pytest.fixture
-def chrome_driver():
+def chrome_driver(headless):
     """This fixture creates a new instance of the chrome driver. The benefit here is that we NEVER have to create a
        driver from scratch! We simply just pass this fixture into anything that needs it.
 
     :return: Chrome web driver object.
     """
 
-    # TODO: Be able to pass something into the pytest command
     # Option to run headless!
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
-    # chrome_options.add_argument("--window-size=1920x1080")
+    if headless:
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--window-size=1920x1080")
 
     return webdriver.Chrome(chrome_options=chrome_options)
 

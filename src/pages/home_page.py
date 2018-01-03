@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from src.locators.demo_form_locators import DemoFormLocators
 from src.locators.header_footer_locators import HeaderFooterLocators
 from src.pages.base_page import BasePage
 
@@ -20,7 +21,7 @@ class HomePage(BasePage):
     PAGE_TITLE = "Online Food Ordering System & App - ChowNow"
     TIMEOUT = 5
 
-    class Locators(HeaderFooterLocators):
+    class Locators(HeaderFooterLocators, DemoFormLocators):
         """This class contains the Locators for the home page. These are tuples containing both how to locate the element
         and the actual locator string.
 

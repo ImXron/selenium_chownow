@@ -32,6 +32,9 @@ class HomePage(BasePage):
 
         """
         CLOSE_GREEN_NOTIFICATION_BAR = (By.XPATH, "//*[@class='header__notification__close']/a")
+        WATCH_VIDEO_BUTTON = (By.CSS_SELECTOR, ".common-button.standard.watch.js")
+        VIDEO_FRAME = (By.NAME, "wistia_embed")
+        VIDEO_CLOSE_BUTTON = (By.XPATH, "//div[@class='modal__close common-close']/a")
 
     def go_to(self):
         """This method gets us to the home page.
@@ -81,6 +84,21 @@ class HomePage(BasePage):
         :return: None.
         """
         self.click_on(self.get_element(self.Locators.REQUEST_DEMO_HEADER))
+
+    def click_watch_video_button(self):
+        """This method will click on the watch video button.
+
+        :return: None.
+        """
+        self.click_on(self.get_element(self.Locators.WATCH_VIDEO_BUTTON))
+
+    def click_close_video_button(self):
+        """This method will click the x button to close the video pop up.
+
+        :return: None.
+        """
+        if self.get_element(self.Locators.VIDEO_CLOSE_BUTTON).is_displayed():
+            self.click_on(self.get_element(self.Locators.VIDEO_CLOSE_BUTTON))
 
     def close_header_notification(self):
         """This method closes the green notification bar that pops up when visiting the home page.

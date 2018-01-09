@@ -52,3 +52,19 @@ def test_clicking_the_request_demo_button_from_the_homepage_navbar_will_take_us_
     home_page.go_to()
     home_page.click_request_demo_button()
     assert expected_condition.title_is("Free Demo - Try Restaurant Software and Apps from ChowNow")
+
+
+@pytest.mark.ID0008
+@pytest.mark.home_page
+def test_clicking_on_watch_video_starts_the_video_and_close_button_closes_it(home_page,
+                                                                             expected_condition,
+                                                                             wait,
+                                                                             setup_tear_down):
+    home_page.go_to()
+    home_page.click_watch_video_button()
+    for element in (home_page.Locators.VIDEO_FRAME, home_page.Locators.VIDEO_CLOSE_BUTTON):
+        assert wait.until(expected_condition.visibility_of_element_located(element))
+
+    home_page.click_close_video_button()
+    for element in (home_page.Locators.VIDEO_FRAME, home_page.Locators.VIDEO_CLOSE_BUTTON):
+        assert wait.until(expected_condition.invisibility_of_element_located(element))
